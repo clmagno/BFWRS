@@ -1,6 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+require('sql/db.php');
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+ 
+   
+        $fullName = $_POST['fullName'];
+        $phoneNo = $_POST['phoneNo'];
+        $houseNo = $_REQUEST['houseNo'];
+        $street = $_REQUEST['street'];
+        $subdivision = $_REQUEST['subdivision'];
+        $brgy = $_REQUEST['brgy'];
+        $city = $_REQUEST['city'];
+        $username =  $_REQUEST['username'];
+        $password = $_REQUEST['password'];
+        $isAdmin = 'False';
+        $encryptPass = md5($password);
+       
+        
+        $sql = "INSERT INTO accounts (fullName, phoneNo, houseNo, street, subdivision, barangay, city, username, password, isAdmin) VALUES ('$fullName','$phoneNo','$houseNo','$street','$subdivision','$brgy','$city','$username', '$encryptPass',$isAdmin)";
+        
+        if(mysqli_query($link, $sql)){
+            
+                
+                // Function definition
+                function function_alert($message) {
+                
+                // Display the alert box 
+                    echo "<script>alert('$message');</script>";
+                }
+                header("Location: homepage.php");
+                exit();
+                // Function call
+                function_alert("You have successfully Signed Up Click OK to continue");
+
+                // link($home);
+           
+        } 
+        else{
+            echo "ERROR: Hush! Sorry $sql. " 
+                . mysqli_error($link);
+        }
+}
+      
+?>
 <head>
 
     <meta charset="utf-8">
@@ -36,11 +81,11 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user">
+                            <form class="user" id="accounts" method="POST">
                                 <div class="form-group">
                                     
                                         <input type="text" class="form-control form-control-user" id="exampleFullName"
-                                            placeholder="Full Name">
+                                           name="fullName" placeholder="Full Name">
                                     
                                    <!--  <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="exampleLastName"
@@ -50,38 +95,38 @@
                                 <div class="form-group">
                                     
                                         <input type="text" class="form-control form-control-user" id="examplePhoneNo"
-                                            placeholder="Contact Number">
+                                            name= "phoneNo" placeholder="Contact Number">
 
                                 </div>
                                 <div class="form-group row">
                                      <div class="col-sm-4 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleHouseNo"
-                                            placeholder="House No.">
+                                            name="houseNo" placeholder="House No.">
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control form-control-user" id="exampleSubdivision"
+                                        <input type="text" class="form-control form-control-user" id="exampleSubdivision" name="subdivision"
                                             placeholder="Subdivision">
                                     </div>
                                     <div class="col-sm-4">
                                         <input type="text" class="form-control form-control-user" id="exampleStreet"
-                                            placeholder="Street">
+                                           name="street" placeholder="Street">
                                     </div>
 
                                 </div>
                                  <div class="form-group row">
                                      <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleBarangay"
-                                            placeholder="Barangay">
+                                            name="brgy" placeholder="Barangay">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="exampleCity"
-                                            placeholder="City">
+                                            name="city" placeholder="City">
                                     </div>
                                 </div>
                                  <div class="form-group">
                                     
                                         <input type="text" class="form-control form-control-user" id="exampleUserName"
-                                            placeholder="Username">
+                                            name= "username" placeholder="Username">
 
                                 </div>
 
@@ -89,11 +134,11 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
+                                            name = "password" id="exampleInputPassword" placeholder="Password">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
+                                            name= "repeatPass" id="exampleRepeatPassword" placeholder="Repeat Password">
                                     </div>
                                 </div>
                                  <div class="form-group">
@@ -104,9 +149,9 @@
                                   </label>
                                 </div>
                             </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a>
+                                <input type="submit" class="btn btn-primary btn-user btn-block">
+                                    
+                                
 
                             </form>
                             <hr>
