@@ -6,6 +6,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: homepage.php");
     exit;
 }
+
+require 'sql/validate.php';
 ?>
 <head>
 
@@ -52,6 +54,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                 <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
+
             </li>
 
             <!-- Divider -->
@@ -178,7 +181,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Chris Magno</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION["username"]; ?></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -254,6 +257,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
             <footer class="sticky-footer ">
                 <div class="container w-100">
                     <div class="copyright text-center">
+                        
                         <span>Copyright &copy; 2022 <a href="https://www.facebook.com/BlessedFlowWaterRefillingStation" >BlessedFlow Water Refilling Station</span>
 
                     </div>

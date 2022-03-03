@@ -6,6 +6,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: homepage.php");
     exit;
 }
+require 'sql/validate.php';
 ?>
 <head>
 
@@ -15,7 +16,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BFWRS - HOME</title>
+    <title>BFWRS - SHOP</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -58,7 +59,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
             <hr class="sidebar-divider my-0">
 <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="">
                     <i class="fas fa-fw fa-building"></i>
                     <span>Shop</span></a>
             </li>
@@ -178,7 +179,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Chris Magno</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION["username"]; ?></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -214,183 +215,49 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                 <!--Main layout-->
                 
 
-<div class="container d-flex justify-content-center mt-50 mb-50">
-    <div class="container-fluid ">
-    <div class="d-sm-flex align-items-center justify-content-between mb-0">
-    <h1 class="h3 mb-0 text-gray-800">Services</h1>
-    </div>
-    <div class="row">
-        <div class="col-md-3 mt-2">
-            <div class="card">
-                <div class="card-body ">
-                    <div class="card-img-actions"> <img src="img/refill_slim.png" class="card-img img-fluid" width="96" height="350" alt=""> </div>
-                </div>
-                <div class="card-body bg-light text-center">
-                    <div class="mb-2">
-                        <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">SLIM CONTAINER<br>MINERAL REFILL</a> </h6> <a href="#" class="text-muted" data-abc="true">Services</a>
-                    </div>
-                    <h3 class="mb-0 font-weight-semibold">₱25.00</h3>
-                    <div class="text-muted mb-3"></div> <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 mt-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-img-actions"> <img src="img/refill_round.png" class="card-img img-fluid" width="96" height="350" alt=""> </div>
-                </div>
-                <div class="card-body bg-light text-center">
-                    <div class="mb-2">
-                        <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">ROUND CONTAINER<br>MINERAL REFILL</a> </h6> <a href="#" class="text-muted" data-abc="true">Services</a>
-                    </div>
-                    <h3 class="mb-0 font-weight-semibold">₱25.00</h3>
-                    
-                    <div class="text-muted mb-3"></div> <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 mt-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-img-actions"> <img src="img/refill_slim_alkaline.png" class="card-img img-fluid" width="96" height="350" alt=""> </div>
-                </div>
-                <div class="card-body bg-light text-center">
-                    <div class="mb-2">
-                        <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">SLIM CONTAINER<br>ALKALINE REFILL</a> </h6> <a href="#" class="text-muted" data-abc="true">Services</a>
-                    </div>
-                    <h3 class="mb-0 font-weight-semibold">₱35.00</h3>
-                    <div class="text-muted mb-3"></div> <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 mt-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-img-actions"> <img src="img/refill_round_alkaline.png" class="card-img img-fluid" width="96" height="350" alt=""> </div>
-                </div>
-                <div class="card-body bg-light text-center">
-                    <div class="mb-2">
-                        <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">ROUND CONTAINER<br>ALKALINE REFILL</a> </h6> <a href="#" class="text-muted" data-abc="true">Services</a>
-                    </div>
-                    <h3 class="mb-0 font-weight-semibold">₱35.00</h3>
-                    
-                    <div class="text-muted mb-3"></div> <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button>
-                </div>
-            </div>
-        </div>
 
-        </div>
-    </div>
-</div>
-<div class="container d-flex justify-content-center mt-50 mb-0">
-    <div class="container-fluid ">
-    <div class="d-sm-flex align-items-center justify-content-between mb-0">
-    <h1 class="h3 mb-0 text-gray-800">Containers</h1>
-    </div>
-    <div class="row">
-        <div class="col-md-3 mt-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-img-actions"> <img src="img/Slim_empty.png" class="card-img img-fluid" width="96" height="350" alt=""> </div>
-                </div>
-                <div class="card-body bg-light text-center">
-                    <div class="mb-2">
-                        <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">SLIM CONTAINER</a> </h6> <a href="#" class="text-muted" data-abc="true">Containers</a>
-                    </div>
-                    <h3 class="mb-0 font-weight-semibold">₱200.00</h3>
-                    <div class="text-muted mb-3"></div> <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 mt-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-img-actions"> <img src="img/round_empty.png" class="card-img img-fluid" width="96" height="350" alt=""> </div>
-                </div>
-                <div class="card-body bg-light text-center">
-                    <div class="mb-2">
-                        <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">ROUND CONTAINER</a> </h6> <a href="#" class="text-muted" data-abc="true">Services</a>
-                    </div>
-                    <h3 class="mb-0 font-weight-semibold">₱200.00</h3>
-                    
-                    <div class="text-muted mb-3"></div> <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button>
-                </div>
-            </div>
-        </div>
-
-        </div>
-    </div>
-</div>
+<!--dynamic part-->
 <div class="container d-flex justify-content-center mt-50 mb-50">
     <div class="container-fluid ">
     <div class="d-sm-flex align-items-center justify-content-between mb-0">
     <h1 class="h3 mb-0 text-gray-800">Container Parts</h1>
     </div>
     <div class="row">
-        <div class="col-md-3 mt-2">
+        <?php 
+                             $sql = "SELECT p.name, p.image, p.price, c.description  FROM products p  join categories c on p.category = c.id ";
+        
+                            $result=mysqli_query($link, $sql);
+                            $records = array();
+                             while($row = mysqli_fetch_assoc($result)){ 
+                              $records[] = $row;
+                              }foreach($records as $rec):?>
+                        
+                            
+                              <div class="col-md-3 mt-2">
             <div class="card">
                 <div class="card-body ">
-                    <div class="card-img-actions"> <img src="img/round_cap.png" class="card-img img-fluid" width="96" height="350" alt=""> </div>
+                    <div class="card-img-actions"> <img src="<?php echo "img/". $rec['image']; ?>" class="card-img img-fluid" width="96" height="350" alt=""> </div>
                 </div>
                 <div class="card-body bg-light text-center">
                     <div class="mb-2">
-                        <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">ROUND CONTAINER CAP</a> </h6> <a href="#" class="text-muted" data-abc="true">Container Parts</a>
+                        <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true"><?php echo $rec['name'];?> </a> </h6> <a href="#" class="text-muted" data-abc="true"><?php echo $rec['description'];?> </a>
                     </div>
-                    <h3 class="mb-0 font-weight-semibold">₱25.00</h3>
-                    <div class="text-muted mb-3"></div> <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button>
+                    <h3 class="mb-0 font-weight-semibold">₱ <?php echo $rec['price'];?> </h3>
+                    <div class="text-muted mb-3"></div> <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button> 
                 </div>
             </div>
         </div>
-        <div class="col-md-3 mt-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-img-actions"> <img src="img/slim_big_cap.png" class="card-img img-fluid" width="96" height="350" alt=""> </div>
-                </div>
-                <div class="card-body bg-light text-center">
-                    <div class="mb-2">
-                        <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">SLIM CONTINER BIG CAP</a> </h6> <a href="#" class="text-muted" data-abc="true">Container Parts</a>
-                    </div>
-                    <h3 class="mb-0 font-weight-semibold">₱35.00</h3>
-                    
-                    <div class="text-muted mb-3"></div> <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 mt-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-img-actions"> <img src="img/slim_small_cap.png" class="card-img img-fluid" width="96" height="350" alt=""> </div>
-                </div>
-                <div class="card-body bg-light text-center">
-                    <div class="mb-2">
-                        <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">SLIM CONTAINER SMALL CAP</a> </h6> <a href="#" class="text-muted" data-abc="true">Container Parts</a>
-                    </div>
-                    <h3 class="mb-0 font-weight-semibold">₱25.00</h3>
-                    <div class="text-muted mb-3"></div> <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 mt-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-img-actions"> <img src="img/slim_faucet.png" class="card-img img-fluid" width="96" height="350" alt=""> </div>
-                </div>
-                <div class="card-body bg-light text-center">
-                    <div class="mb-2">
-                        <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">SLIM CONTAINER FAUCET</a> </h6> <a href="#" class="text-muted" data-abc="true">Services</a>
-                    </div>
-                    <h3 class="mb-0 font-weight-semibold">₱50.00</h3>
-                    
-                    <div class="text-muted mb-3"></div> <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button>
-                </div>
-            </div>
-        </div>
+                             
+
+                            
+                          <?php endforeach; ?>
+
+        
+       
 
         </div>
     </div>
-</div>
-<!--Main layout-->
-                   
+</div> 
 <!--Main layout-->
 
 <!--Main layout-->
@@ -401,7 +268,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                 <div class="container w-100">
                     <div class="copyright text-center">
                         <span>Copyright &copy; 2022 <a href="https://www.facebook.com/BlessedFlowWaterRefillingStation" >BlessedFlow Water Refilling Station</span>
-
+                            
                     </div>
 
                 </div>
