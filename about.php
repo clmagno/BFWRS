@@ -15,7 +15,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BFWRS - HOME</title>
+    <title>BFWRS - ABOUT</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -48,7 +48,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item ">
                 <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -65,7 +65,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 <!-- Nav Item - Dashboard -->
-            <li class="nav-item ">
+            <li class="nav-item active">
                 <a class="nav-link" href="about.php">
                     <i class="fas fa-fw fa-info"></i>
                     <span>About</span></a>
@@ -76,13 +76,13 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper " class="d-flex flex-columnm">
+        <div id="content-wrapper " class="d-block w-100">
 
             <!-- Main Content -->
-            <div id="content">
+            <div id="content ">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow ">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -211,43 +211,33 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid  ">
+                <!--Main layout-->
+<main class=" my-50 p-0">
+  <div class="container-sm">
+    <!--Google map-->
+    <div id="map-container-google-4" class="z-depth-1-half map-container-4" style="height: 300px">
+     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.9715180939183!2d121.06776031427918!3d14.54362148237082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c89af73740b9%3A0x3f914519765ca646!2sBlessedflow%20Mineral%20Water%20Filling%20Station!5e0!3m2!1sen!2sus!4v1646216679863!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
 
-                    <!-- Page Heading -->
-<!--                     <div class="d-bg-flex align-items-center justify-content-between ">
- -->
-                        <!-- <h1 class="h3 mb-0 text-gray-800">Dashboard</h1> -->
-                        <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
-                   <!--  </div> -->
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                      <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                      </ol>
-                      <div class="carousel-inner">
-                        <div class="carousel-item active">
-                          <img class="d-block w-100 " src="img/banner.png" alt="First slide">
-                        </div>
-                        <div class="carousel-item">
-                          <img class="d-block w-100" src="img/banner2.png" alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                          <img class="d-block w-100" src="img/banner3.png" alt="Second slide">
-                        </div>
-                      </div>
-                          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                          </a>
-                          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                          </a>
-                    </div>
+  </div>
+</main>
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">About us!</h6>
+            </div>
+                <div class="card-body">
+                    <p>Blessed Flow is a water refilling station stationed at Pateros, Metro Manila was estabished on September of 2020. The business offers all the drinking water services possible, from refilling to new containers and parts. Devilery for customer is free of charge and we deliver to locations; Pateros, Pasig San Joaquin, Pasig Kalawaan and Makati Comembo. We replace our filters every week and does water testing every month to ensure that we are providing the best mineral and alkaline drinking water to our customers.</p>
+                    <p class="mb-0">B4 L11 E Ragas St. Tangco Subdivision Sta. Ana Pateros, Metro Manila</p>
+                    <p class="mb-0">Business Hours: 7:00 am - 5:00 pm Monday to Saturday</p>
                 </div>
+</div>
+<!--Main layout-->
+                   
+<!--Main layout-->
 
+<!--Main layout-->
             <!-- End of Main Content -->
 
             <!-- Footer -->
