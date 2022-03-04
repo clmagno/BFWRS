@@ -1,6 +1,8 @@
 <?php
 session_start();
 require 'sql/db.php';
+
+
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
 

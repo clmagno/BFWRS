@@ -209,7 +209,7 @@ svg {
 }
 
 table {
-  border:none;
+
   border-collapse: collapse;
 }
 
@@ -298,7 +298,9 @@ input[type="checkbox"] {
 
 textarea {
   overflow: auto;
-  resize: vertical;
+  resize: none;
+  max-width: auto;
+
 }
 
 fieldset {

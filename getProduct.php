@@ -10,13 +10,17 @@ require 'sql/db.php';
       $result = mysqli_query($connect, $query);  
       $output .= '  
       <div class="table-responsive">  
+      <form method="POST" action="addToCart.php">
            <table class="table table-borderless" >';  
       while($row = mysqli_fetch_array($result))  
       {  
+        $pID  = $row["name"]; 
            $output .= '
+
            		<tr>  
                      <td width="30%" hidden><label>Item ID:</label></td>  
                      <td width="70%" hidden>'.$row["id"].'</td>  
+
                 </tr>   
                 <tr>  
                      <td width="30%"><label>Item</label></td>  
@@ -40,8 +44,12 @@ require 'sql/db.php';
                 </tr> 
              
                 ';  
+
       }  
-      $output .= "</table></div>";  
-      echo $output;  
+      $output .= "</table></form></div>";  
+      echo $output; 
+
+      
  }  
+
  ?>

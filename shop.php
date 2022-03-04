@@ -7,6 +7,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     exit;
 }
 require 'sql/validate.php';
+
 ?>
 <head>
 
@@ -303,8 +304,9 @@ require 'sql/validate.php';
                  </div>
                  <!--  -->
                 <div class="modal-footer">
+                    <form action="addToCart.php" method="POST">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="logout.php">Proceed</a>
+                    <button class="btn btn-primary" name="proceed" id="proceed" >Proceed</a>
 
                 </div>
             </div>
