@@ -11,9 +11,9 @@ require 'sql/validate.php';
 <head>
 
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
     <meta name="author" content="">
 
     <title>BFWRS - SHOP</title>
@@ -26,17 +26,14 @@ require 'sql/validate.php';
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
@@ -44,17 +41,14 @@ require 'sql/validate.php';
                 </div>
                 <div class="sidebar-brand-text mx-3">BFWRS</div>
             </a>
-
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
             <!-- Nav Item - Dashboard -->
             <li class="nav-item ">
                 <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 <!-- Nav Item - Dashboard -->
@@ -71,25 +65,19 @@ require 'sql/validate.php';
                     <i class="fas fa-fw fa-info"></i>
                     <span>About</span></a>
             </li>
-
-           
         </ul>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper " class="d-block w-100">
-
             <!-- Main Content -->
             <div id="content ">
-
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow ">
-
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
-
                     <!-- Topbar Search -->
                     <form
                         class="d-none d-sm-inline-block form-inline my-2 my-md-0 w-100 navbar-search">
@@ -103,7 +91,6 @@ require 'sql/validate.php';
                             </div>
                         </div>
                     </form>
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -224,16 +211,15 @@ require 'sql/validate.php';
     </div>
     <div class="row">
         <?php 
-                             $sql = "SELECT p.name, p.image, p.price, c.description  FROM products p  join categories c on p.category = c.id ";
+        $sql = "SELECT p.id, p.name, p.image, p.price, c.description  FROM products p  join categories c on p.category = c.id ";
         
                             $result=mysqli_query($link, $sql);
                             $records = array();
                              while($row = mysqli_fetch_assoc($result)){ 
                               $records[] = $row;
                               }foreach($records as $rec):?>
-                        
-                            
-                              <div class="col-md-3 mt-2">
+
+        <div class="col-md-3 mt-2">
             <div class="card">
                 <div class="card-body ">
                     <div class="card-img-actions"> <img src="<?php echo "img/". $rec['image']; ?>" class="card-img img-fluid" width="96" height="350" alt=""> </div>
@@ -243,19 +229,16 @@ require 'sql/validate.php';
                         <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true"><?php echo $rec['name'];?> </a> </h6> <a href="#" class="text-muted" data-abc="true"><?php echo $rec['description'];?> </a>
                     </div>
                     <h3 class="mb-0 font-weight-semibold">₱ <?php echo $rec['price'];?> </h3>
-                    <div class="text-muted mb-3"></div> <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Add to cart</button> 
+                    <div class="text-muted mb-3"></div>
+                   <button type="button" class="product dropdown-item view_data" name="view"  data-toggle="modal" data-target="#dataModal" id="<?php echo $rec['id'] ?>">
+                    
+                    <i class="fa fa-cart-plus mr-2"></i> Add to cart</a>
+                    
                 </div>
             </div>
         </div>
-                             
-
-                            
-                          <?php endforeach; ?>
-
-        
-       
-
-        </div>
+        <?php endforeach; ?>
+    </div>
     </div>
 </div> 
 <!--Main layout-->
@@ -306,6 +289,28 @@ require 'sql/validate.php';
         </div>
     </div>
 
+    <!--- Add to Cart Modal -->
+
+ <div class="modal fade" id="dataModal" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel" >Please review the details below</h3>
+                    
+                </div>
+                <div class="modal-body" id="product_detail">
+                       
+                 </div>
+                 <!--  -->
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="logout.php">Proceed</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -322,7 +327,25 @@ require 'sql/validate.php';
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
-    
+   
+<script type="text/javascript"></script>
+ <script>  
+ $(document).ready(function(){  
+      $('.view_data').click(function(){  
+           var product_id = $(this).attr("id");  
+           $.ajax({  
+                url:"getProduct.php",  
+                method:"post",  
+                data:{product_id:product_id},  
+                success:function(data){  
+                     $('#product_detail').html(data);  
+                     $('#dataModal').modal("show");  
+                }  
+           });  
+      });  
+ });  
+ </script>
+}
 </body>
 
 </html>

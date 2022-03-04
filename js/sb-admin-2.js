@@ -33,7 +33,10 @@
       e.preventDefault();
     }
   });
-
+  $(document).on("click", ".open-homeEvents", function () {
+     var eventId = $(this).data('id');
+     $('#idHolder').html( eventId );
+});
   // Scroll to top button appear
   $(document).on('scroll', function() {
     var scrollDistance = $(this).scrollTop();
